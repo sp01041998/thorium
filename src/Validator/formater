@@ -1,0 +1,21 @@
+const res = require("express/lib/response")
+
+function trim() {
+    let name = '  Shreyash Patel    '
+    console.log('Trimmed name is: ',name.trim())
+}
+
+function changetoLowerCase() {
+    let name = 'SHreYash PateL'
+    console.log('Name in lowercase is: ',name.toLowerCase())
+}
+
+function changeToUpperCase() {
+    let name = 'shreyash patel'
+    console.log('Name in uppercase is: ',name.toUpperCase())
+}
+
+module.exports.trim = trim
+module.exports.changetoLowerCase = changetoLowerCase
+module.exports.changeToUpperCase = changeToUpperCase
+
