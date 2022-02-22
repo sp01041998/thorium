@@ -5,7 +5,12 @@ const router = express.Router();
 
 
 router.get('/test-me', function (req, res) {
-    res.send(obj.welcome("sp"))
-});
+    let names = [ 'Hariom', 'Arpit', 'Akash', 'Sabiha']
+    //Module 1 members
+    obj.printMessage('thorium')
+    console.log(obj.url)
+    obj.printWelcomeMessage()
+    res.send("hi my name is shreyash")
+})
 
 module.exports = router;
