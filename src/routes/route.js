@@ -19,7 +19,30 @@ router.get('/movies/:index', function (req, res) {
     }else {
         res.send(movieList[movieName])
     }
+})
 
-});
+    // movies list in an object
+    router.get('/films', function(req,res){
+        res.send('[{"id" : 1 , "name": "The Shining"},{"id" : 2 , "name":"Incredibles"},{"id": 3 , "name": "Rang de basanti"}]')
+    });
 
+    // get movie object with id value
+
+    router.get('/films/:filmId', function(req, res){
+       const movieObjectList = [{"id" : 1 , "name": "The Shining"},{"id" : 2 , "name":"Incredibles"},{"id": 3 , "name": "Rang de basanti"}]
+
+       let idValue = req.params.filmId 
+
+       for(let i =0; i< movieObjectList.length; i++){
+           if(movieObjectList[i].id === idValue){
+               res.send(movieObjectList[idValue])
+               break
+           }else if (i === movieObjectList.length-1){
+               res.send('No movie exists with this id')
+           }
+
+           }
+       
+
+    })
 module.exports = router;
