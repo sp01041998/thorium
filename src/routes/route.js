@@ -50,34 +50,48 @@ router.post("/post-query-2", function (req, res) {
 // also return an array consisting of only the person that can vote
 
 //  take this as sample for array of persons:
-// let persons= [
-//     {
-//     name: "PK",
-//     age: 10,
-//     votingStatus: false
-// },
-// {
-//     name: "SK",
-//     age: 20,
-//     votingStatus: false
-// },
-// {
-//     name: "AA",
-//     age: 70,
-//     votingStatus: false
-// },
-// {
-//     name: "SC",
-//     age: 5,
-//     votingStatus: false
-// },
-// {
-//     name: "HO",
-//     age: 40,
-//     votingStatus: false
-// }
-// ]
+let persons= [
+    {
+    name: "PK",
+    age: 10,
+    votingStatus: false
+},
+{
+    name: "SK",
+    age: 20,
+    votingStatus: false
+},
+{
+    name: "AA",
+    age: 70,
+    votingStatus: false
+},
+{
+    name: "SC",
+    age: 5,
+    votingStatus: false
+},
+{
+    name: "HO",
+    age: 40,
+    votingStatus: false
+}
+]
 
+let eligiblePerson = []
+router.post('/post_query_ageCheck', function(req,res){
+    let age=req.query.votingAge
+    for(let i = 0; i<persons.length; i++){
+        if(age < persons[i].age){
+            persons[i].votingStatus=true
+            eligiblePerson.push(persons[i].name)
+        }
+    }
+     console.log(persons)
+     console.log(eligiblePerson)
+    return res.send({personsArray :persons, eligiblePersonArray : eligiblePerson})
+
+})
 
 
 
