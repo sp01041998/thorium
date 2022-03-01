@@ -16,16 +16,16 @@ const bookList = async function(req, res) {
 
 const bookByYear = async function(req, res) {
     let year1 = req.query.Isyear
-    let booklist = await bookModel.find({year : { $eq : year1} }).count()
+    let booklist = await bookModel.find({year : { $eq : year1} })
     res.send({msg : booklist})
 }
 
 const getParticularBook = async function(req, res) {
-    let data = req.query.any 
-    console.log(typeof (data))
-    let saveData = await bookModel.find({ $or : [{bookName : data}, {year: data}, {authorName : data}, {totalPage : data}, {stockAvailable : data}, {'bookPrice.indianPrice': data}, {'bookPrice.europeanPrice' : data}, {tags : data}] })
+    let data = req.body
+    //console.log(typeof (data))
+    let saveData = await bookModel.find(data)
     console.log(saveData)
-    res.send(saveData)
+    res.send({msg : saveData})
 }
 
 
