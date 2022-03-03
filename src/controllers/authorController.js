@@ -1,3 +1,4 @@
+const authorModel = require("../models/authorModel")
 const AuthorModel= require("../models/authorModel")
 
 const createAuthor= async function (req, res) {
@@ -11,5 +12,10 @@ const getAuthorsData= async function (req, res) {
     res.send({data: authors})
 }
 
+const deleteauthor = async function(req,res){
+    let delet = await AuthorModel.deleteMany()
+}
+
 module.exports.createAuthor= createAuthor
 module.exports.getAuthorsData= getAuthorsData
+module.exports.deleteauthor=deleteauthor
