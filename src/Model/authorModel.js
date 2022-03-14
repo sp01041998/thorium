@@ -19,7 +19,8 @@ const authorModel = new mongoose.Schema({
 emailId : {
     type : String,
     require : true,
-    unique: true
+    unique: true,
+    match : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 },
 password : {
     type: String,
