@@ -65,8 +65,8 @@ const BloglistbyFilter = async function (req, res) {
         if (authorId != null) obj.authorId = authorId
         if (tags != null) obj.tags = tags
         if (subCategory != null) obj.subCategory = subCategory
-        // obj.isDeleted = false
-        // obj.isPublished = true
+        obj.isDeleted = false
+        obj.isPublished = true
 
         let blogData = await blogModel.find(obj)
         // console.log(blogData)
@@ -185,6 +185,8 @@ const deletecertainBlog = async function (req, res) {
             }
         }
 
+        obj.authorId=req.blogId
+
         //console.log(obj)
         // here i have douts(wheteher all filters will be applied after check whther a given blog is published or not )
         //if(isPublished != null) obj.isPublished=isPublished
@@ -194,7 +196,7 @@ const deletecertainBlog = async function (req, res) {
         // } 
 
         if (Object.keys(obj).length != 0) {
-            let result = await blogModel.updateOne(
+            let result = await blogModel.updateMany(
                 obj,
                 { $set: { isDeleted: true } }
             )
